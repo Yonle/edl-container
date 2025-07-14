@@ -4,10 +4,8 @@ LABEL org.opencontainers.image.source="https://github.com/Yonle/edl-container" \
       org.opencontainers.image.description="basically a container for bkerler/edl program, because you hate waiting for its dependencies to get compiled." \
       org.opencontainers.image.licenses="MIT"
 
-RUN apk add --no-cache \
-    android-tools libusb py3-pip python3 git xz cmake build-base
-
-RUN git clone \
+RUN apk add --no-cache android-tools libusb py3-pip python3 git xz cmake build-base \
+    && git clone \
           --depth=1 \
           --branch=master \
           --recurse-submodules \
