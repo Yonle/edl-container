@@ -12,23 +12,11 @@ RUN git clone \
 
 WORKDIR /root/edl
 
-RUN pip3 install --root-user-action ignore --break-system-packages -r requirements.txt
-RUN python3 setup.py build
-RUN python3 setup.py install
-
-# Cleanups
-
-WORKDIR /root/
-
-RUN mkdir -p /root/misc
-RUN mv \
-       edl/Drivers/ \
-       edl/install-linux-edl-drivers.sh \
-       /root/misc
-
-RUN mv edl/LICENSE /root/edlclient-LICENSE
-
-RUN rm -rf /root/.cache /root/edl
-RUN pip3 cache purge
-RUN find /usr/ -type f -name '*.pyc' -delete
-RUN apk del build-base cmake
+RUN pip3 install --root-user-action ignore --break-system-packages -r requirements.txt \
+    && python3 setup.py build \
+    && python3 setup.py install \
+    && mkdir -p /root/misc && mv Drivers/ install-linux-edl-drivers.sh /root/misc/ \
+    && mv LICENSE /root/edlclient-LICENSE \
+    && pip3 cache purge && rm -rf /root/.cache /root/edl \
+    && find /usr/lib/python3.12/ -type f -name '*.pyc' -delete \
+    && apk del build-base cmake
