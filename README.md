@@ -16,8 +16,8 @@ mkdir $PWD/shared
 you will need to configure udev:
 
 ```
-[c] copy edl:/root/edl/Drivers .
-[c] copy edl:/root/edl/install-linux-edl-drivers.sh .
+[c] copy edl:/root/misc/Drivers .
+[c] copy edl:/root/misc/install-linux-edl-drivers.sh .
 ./install-linux-edl-drivers.sh
 ```
 

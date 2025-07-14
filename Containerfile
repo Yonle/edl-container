@@ -18,6 +18,17 @@ RUN python3 setup.py install
 
 # Cleanups
 
+WORKDIR /root/
+
+RUN mkdir -p /root/misc
+RUN mv \
+       edl/Drivers/ \
+       edl/install-linux-edl-drivers.sh \
+       /root/misc
+
+RUN mv edl/LICENSE /root/edlclient-LICENSE
+
+RUN rm -rf /root/.cache /root/edl
 RUN pip3 cache purge
-RUN find /usr/local -type f -name '*.pyc' -delete
+RUN find /usr/ -type f -name '*.pyc' -delete
 RUN apk del build-base cmake
