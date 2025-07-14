@@ -13,7 +13,7 @@ mkdir $PWD/shared
 
 (where `[c]` could be [`docker`](https://docker.com) or [`podman`](https://podman.io))
 
-you will need to configure udev:
+optionally, you may need to configure udev:
 
 ```
 [c] copy edl:/root/misc/Drivers .
@@ -26,6 +26,8 @@ and then reboot.
 ---
 
 finally, just run `[c] start edl` and then `[c] exec -it edl su -l`
+
+then do your normal `edl`, `adb`, or `fastboot` activities inside here...
 
 ## shared folder
 
