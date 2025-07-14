@@ -2,7 +2,7 @@
 
 basically a container for [bkerler/edl](https://github.com/bkerler/edl) program.
 
-because you hate waiting for it's dependencies to get compiled.
+because you hate waiting for its dependencies to get compiled.
 
 ```
 mkdir $PWD/shared

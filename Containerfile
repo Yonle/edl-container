@@ -1,7 +1,7 @@
 FROM docker.io/alpine:3.22
 
 LABEL org.opencontainers.image.source="https://github.com/Yonle/edl-container" \
-      org.opencontainers.image.description="basically a container for bkerler/edl program, because you hate waiting for it's dependencies to get compiled." \
+      org.opencontainers.image.description="basically a container for bkerler/edl program, because you hate waiting for its dependencies to get compiled." \
       org.opencontainers.image.licenses="MIT"
 
 RUN apk add --no-cache \
@@ -12,11 +12,9 @@ RUN git clone \
           --branch=master \
           --recurse-submodules \
           --shallow-submodules \
-          https://github.com/bkerler/edl /root/edl
-
-WORKDIR /root/edl
-
-RUN pip3 install --root-user-action ignore --break-system-packages -r requirements.txt \
+          https://github.com/bkerler/edl /root/edl \
+    && cd /root/edl/ \
+    && pip3 install --root-user-action ignore --break-system-packages -r requirements.txt \
     && python3 setup.py build \
     && python3 setup.py install \
     && mkdir -p /root/misc && mv Drivers/ install-linux-edl-drivers.sh /root/misc/ \
