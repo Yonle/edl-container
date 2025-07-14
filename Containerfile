@@ -1,5 +1,9 @@
 FROM docker.io/alpine:3.22
 
+LABEL org.opencontainers.image.source="https://github.com/Yonle/edl-container" \
+      org.opencontainers.image.description="basically a container for bkerler/edl program, because you hate waiting for it's dependencies to get compiled." \
+      org.opencontainers.image.licenses="MIT"
+
 RUN apk add --no-cache \
     android-tools libusb py3-pip python3 git xz cmake build-base
 
