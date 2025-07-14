@@ -7,7 +7,7 @@ because you hate waiting for it's dependencies to get compiled.
 ```
 mkdir $PWD/shared
 [c] pull ghcr.io/yonle/edl-container:master
-[c] create --name edl --privileged --device /dev/ttyUSB0 -v /dev/bus/usb:/dev/bus/usb -v $PWD/shared:/mnt ghcr.io/yonle/edl-container:master sleep Infinity
+[c] create --name edl -v /dev/bus/usb:/dev/bus/usb -v $PWD/shared:/mnt ghcr.io/yonle/edl-container:master sleep Infinity
 [c] start edl
 ```
 
