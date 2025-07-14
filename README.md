@@ -13,7 +13,7 @@ mkdir $PWD/shared
 
 (where `[c]` could be [`docker`](https://docker.com) or [`podman`](https://podman.io))
 
-optionally, you may need to configure udev:
+then, you need to configure udev:
 
 ```
 [c] copy edl:/root/misc/Drivers .
@@ -21,7 +21,7 @@ optionally, you may need to configure udev:
 ./install-linux-edl-drivers.sh
 ```
 
-and then reboot.
+and then reboot your computer.
 
 ---
 
