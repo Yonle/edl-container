@@ -21,8 +21,6 @@ then, you need to configure udev:
 ./install-linux-edl-drivers.sh
 ```
 
-and then reboot your computer.
-
 ---
 
 finally, just run `[c] start edl` and then `[c] exec -it edl su -l`
