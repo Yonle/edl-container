@@ -42,3 +42,19 @@ edl rf /mnt/dump.bin
 ```
 
 you will see `dump.bin` inside the `shared/` folder.
+
+## why edl-container
+
+```
+[+] Building 190.1s (6/6) FINISHED
+```
+
+normal installation took **190.1 seconds** to finish on gcloud with 4 cores of CPUs. imagine the time will took to install `edl` on a celeron machine.
+
+on top of that, post-install size took **more storage** if done without additional cache purging & etc.
+
+```
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+normal       latest    db64b628580e   About a minute ago   1.59GB
+yonle/edl    latest    f6d3b5503004   11 hours ago         472MB
+```
