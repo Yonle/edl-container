@@ -13,6 +13,11 @@ mkdir $PWD/shared
 
 (where `[c]` could be [`docker`](https://docker.com) or [`podman`](https://podman.io))
 
+**note**: for docker user, you must provide `--privileged` flag when creating the container:
+```
+docker create --privileged --name edl -v /dev/bus/usb:/dev/bus/usb -v $PWD/shared:/mnt ghcr.io/yonle/edl-container:master sleep Infinity
+```
+
 then, you need to configure udev:
 
 ```
@@ -22,6 +27,8 @@ then, you need to configure udev:
 ```
 
 ---
+
+If you have SELinux enabled, you may need to set it to permissive mode temporarily to prevent permission issues. SELinux is commonly used by RedHat-like distros (for example, RHEL, Fedora, and CentOS). You can set it to permissive run-time until next boot with `sudo setenforce 0`.
 
 finally, just run `[c] start edl` and then `[c] exec -it edl su -l`
 
