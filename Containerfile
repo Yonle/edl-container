@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/Yonle/edl-container" \
       org.opencontainers.image.description="basically a container for bkerler/edl program, because you hate waiting for its dependencies to get compiled." \
       org.opencontainers.image.licenses="MIT"
 
-RUN apk add --no-cache android-tools libusb py3-pip python3 git xz cmake build-base \
+RUN apk add --no-cache android-tools libusb py3-pip python3 git xz cmake build-base xz-dev python3-dev \
     && git clone \
           --depth=1 \
           --branch=master \
@@ -13,10 +13,9 @@ RUN apk add --no-cache android-tools libusb py3-pip python3 git xz cmake build-b
           https://github.com/bkerler/edl /root/edl \
     && cd /root/edl/ \
     && pip3 install --root-user-action ignore --break-system-packages -r requirements.txt \
-    && python3 setup.py build \
-    && python3 setup.py install \
+    && env CFLAGS="-Wno-int-conversion" pip install --root-user-action ignore --break-system-packages -U . \
     && mkdir -p /root/misc && mv Drivers/ install-linux-edl-drivers.sh /root/misc/ \
     && mv LICENSE /root/edlclient-LICENSE \
     && pip3 cache purge && rm -rf /root/.cache /root/edl \
     && find /usr/lib/python3.12/ -type f -name '*.pyc' -delete \
-    && apk del build-base cmake
+    && apk del build-base cmake xz-dev python3-dev
